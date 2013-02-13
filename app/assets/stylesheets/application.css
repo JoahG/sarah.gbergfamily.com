@@ -630,7 +630,7 @@ input#mc-embedded-subscribe, .button {
   cursor: pointer;
 }
 
-input#mc-embedded-subscribe:hover {
+input#mc-embedded-subscribe:hover, .button:hover {
   background-color:#1744A8;
 }
 #tagst {
@@ -686,4 +686,31 @@ embed#ati_urlmon, embed#ati_urlmon_pre {
 
 .log_in_field {
   width: 25% !important;
+}
+
+.column {
+  display: inline-block;
+}
+
+.column a {
+  color: #666 !important;
+}
+
+.column.two {
+  width: 49%;
+}
+
+ul.nolst {
+  list-style-type: none;
+}
+
+.right-align {
+  text-align: right;
+  border-right:1px solid black;
+  padding-right: 1%;
+}
+
+.left-align {
+  text-align: left;
+  float:right;
 }

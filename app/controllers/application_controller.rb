@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   helper_method :render_body
   helper_method :related
   helper_method :redirect_to_home
-
   private
 
   def related(p)

@@ -9,7 +9,8 @@ class PostsController < ApplicationController
   end
 
   def admin
-    @posts = Post.all
+    @posts = Post.all.reverse
+    @users = User.all
   end
 
   def show
@@ -27,7 +28,6 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
 
     if @post.save
-      NewsItem.create(:title => @post.title, :content => @post.intro ? @post.intro : @post.content, :author_name => @post.user.name)
       redirect_to root_url
     end
   end

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sblog</title>
+  <title><%if @title%><%=@title%> - Sarah's Desk <%else%>Sarah's Desk<%end%></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= auto_discovery_link_tag :atom, "/feed.atom" %>
   <%= javascript_include_tag "application" %>
