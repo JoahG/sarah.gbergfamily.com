@@ -1,0 +1,90 @@
+<div id="hippo">
+	<div id="welcome">
+		<img class="swelcome" src="/assets/logo.png">
+	</div>
+	<div id="sidebar">
+		<div class="bubble">
+			<img class="stitle right" src="/assets/my_songs.png">
+			<ul>
+				<% @posts.each do |post|%>
+					<% if post.tag_list.include? "My Songs" %>
+						<li> <%= link_to post.title, post %> </li>
+					<%end%>
+				<%end%>
+			</ul>
+			<img class="stitle left" src="/assets/my_poems.png">
+			<ul>
+				<% @posts.each do |post|%>
+					<% if post.tag_list.include? "My Poems" %>
+						<li> <%= link_to post.title, post %> </li>
+					<%end%>
+				<%end%>
+			</ul>
+			<img class="stitle right" src="/assets/songs.png">
+			<ul>
+				<% @posts.each do |post|%>
+					<% if post.tag_list.include? "Songs I Like" %>
+						<li> <%= link_to post.title, post %> </li>
+					<%end%>
+				<%end%>
+			</ul>
+			<img class="stitle right" src="/assets/books.png">
+			<ul>
+				<% @posts.each do |post|%>
+					<% if post.tag_list.include? "Book Reviews" %>
+						<li> <%= link_to post.title, post %> </li>
+					<%end%>
+				<%end%>
+			</ul>
+		</div>
+	</div>
+	<div id="main" class="index">
+		<% @posts[0..15].each do |post| %>
+			<div class="article">
+				<div class="author">
+					<%= image_tag avatar_url(post.user, 30) %>
+					By <%= post.user.name %>
+					<div class="date">
+						<%= post.created_at.strftime("%b. %d %Y") %>
+					</div>
+				</div>
+				<h3><%= link_to post.title, post %></h3>
+				<p>
+					<%= post.intro %>
+				</p>
+				<%= link_to "Read more", post, :class => "more" %>
+				<span class="tags">
+					Filed under <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(", ") %>
+				</span>
+			</div>
+		<%end%>
+	</div>
+	<div id="sidebar">
+		<div class="bubble">
+			<img class="stitle right" src="/assets/my_thoughts.png">
+			<ul>
+				<% @posts.each do |post|%>
+					<% if post.tag_list.include? "My Thoughts" %>
+						<li> <%= link_to post.title, post %> </li>
+					<%end%>
+				<%end%>
+			</ul>
+			<img class="stitle left" src="/assets/sotm.png">
+			<ul>
+				<% @posts.each do |post|%>
+					<% if post.tag_list.include? "SOTM" %>
+						<li> <%= link_to post.title, post %> </li>
+					<%end%>
+				<%end%>
+			</ul>
+			<img class="stitle right" src="/assets/rec-pat.png">
+			<ul>
+				<% @posts.each do |post|%>
+					<% if post.tag_list.include? "Recipies" or post.tag_list.include? "Crafts" %>
+						<li> <%= link_to post.title, post %> </li>
+					<%end%>
+				<%end%>
+			</ul>
+		</div>
+	</div>
+</div>

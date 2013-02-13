@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sblog</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= auto_discovery_link_tag :atom, "/feed.atom" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag :rails %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width">
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<%=link_to root_url do %>
+				<img class="logo" src="/assets/header.png" alt="Sarah's Desk">
+			<%end%>
+			<p class="rss">
+				<%= link_to "/feed.atom" do %>
+					<img class="rss" src="/assets/rss.png">
+				<% end %>
+			</p>
+			<span class="ssignup"> Signup to receive updates via email below </span>
+			<div class="ssignup">
+				<div id="mc_embed_signup">
+					<form id="mc-embedded-subscribe-form" class="validate" action="http://gbergfamily.us5.list-manage1.com/subscribe/post?u=15347a04cb4dfbd791774315f&amp;id=2ff8eb68cd" method="post" name="mc-embedded-subscribe-form" target="_blank">
+						<div class="mc-field-group">
+							<input class="required email" id="mce-EMAIL" type="email" value="" name="EMAIL" placeholder="Email Address">
+							<input class="button" id="mc-embedded-subscribe" type="submit" value="Subscribe" name="subscribe">
+						</div>
+						<div id="mce-responses" class="clear">
+							<div id="mce-error-response" class="response" style="display:none;">
+							</div>
+							<div id="mce-success-response" class="response" style="display:none;">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<%= yield %>
+	</div>
+</div>
+	<div id="footer">
+		<p>
+			&copy; 2013 Joah Gerstenberg
+		</p>
+		<p>
+			All content copyrighted by individual authors
+		</p>
+		<p>
+			<% if current_user %>
+				Logged in as <%= current_user.email %> <br>
+				<%= link_to "Admin Page", admin_path %> <br>
+				<%= link_to "Log Out", log_out_path %>
+				<style>
+					#footer {
+						height: 100px;
+					}
+				</style>
+			<% else %>
+				<%= link_to "Admin Log In", "/log_in" %>
+			<% end %>
+		</p>
+	</div>
+</body>
+</html>

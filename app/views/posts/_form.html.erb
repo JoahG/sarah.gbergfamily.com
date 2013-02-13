@@ -1,0 +1,35 @@
+<%= form_for @post do |f| %>
+	<%if current_user %>
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+	<%end%>
+	<div class="field">
+		<%= f.text_field :title, :placeholder => "Title" %>
+	</div>
+	<div class="field">
+		<%= f.text_field :tag_list, :placeholder => "Tags (separated by commas)" %>
+	</div>
+	<br>
+	<div class="field">
+		<%= f.text_area :intro, :placeholder => "Intro", :class => "formintro" %>
+	</div>
+	<div id="wmd-button-bar"><ul class="wmd-button-row"></ul></div>
+	<div class="field">
+		<%= f.text_area :content, :placeholder => "Content...", :class => "formcontent", :id => "wmd-input"%>
+	</div>	
+	<div class="field">
+		<%= f.label :show_intro, "Include intro on post page?" %>
+		<%= f.check_box :show_intro %><br><br>
+		<%= f.submit :class => "button" %>
+	</div>
+<%end%>
+
+<script>
+  setup_wmd({
+      input: "wmd-input",
+      button_bar: "wmd-button-bar"
+  });
+
+  $().ready(function(){
+
+  });
+</script>
