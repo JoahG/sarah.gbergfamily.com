@@ -13,7 +13,7 @@
     <%end%>
     <%= raw render_body(@post.content) %>
     <hr style="clear:both;">
-    <div id="disqus_thread" class="body">
+    <!-- <div id="disqus_thread" class="body">
     </div>
     <script>
       var disqus_url = "http://sarah.gbergfamily.com/#{article.name}";
@@ -33,7 +33,40 @@
         }
         document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/sarahgbergfamily/get_num_replies.js' + query + '"></' + 'script>');
       })();
-    </script>
+    </script> -->
+    <% @post.comments.each do |comment| %>
+      <div class="comment">
+        <p class="comment_author">
+          <%= comment.author_name %>
+        </p>
+        <p class="comment_content">
+          <%= comment.content %>
+        </p>
+      </div>
+    <%end%>
+
+    <%= form_for @comment do |f| %>
+      <div class="field">
+        <%= f.text_field :author_name, :placeholder => "Name" %> (required)
+      </div>
+      <div class="field">
+        <%= f.email_field :author_email, :placeholder => "Email Address" %> (required, but nor shown)
+      </div>
+      <div class="field">
+        <%= f.text_area :content, :placeholder => "Comment..." %> (required... duh...)
+      </div>
+      <%= f.hidden_field :post_id, :value => @post.id %>
+      <script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k=6LfV_twSAAAAAEtzeSDbFKz3Dt1kne59XvjzLS0C">
+      </script>
+      <noscript>
+         <iframe src="http://www.google.com/recaptcha/api/noscript?k=6LfV_twSAAAAAEtzeSDbFKz3Dt1kne59XvjzLS0C," height="300" width="500" frameborder="0"></iframe><br>
+         <textarea name="recaptcha_challenge_field" rows="3" cols="40"> </textarea>
+         <input type="hidden" name="recaptcha_response_field" value="manual_challenge">
+      </noscript>
+      <div class="actions">
+        <%= f.submit :class => "button" %>
+      </div>
+    <%end%>
   </div>
 </div>
 

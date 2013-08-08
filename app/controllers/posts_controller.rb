@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all.reverse
+    @posts_all = Post.all
+
 
     respond_to do |format|
       format.html
@@ -15,6 +17,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
+    
     if request.path != post_path(@post)
       redirect_to @post, :status => :moved_permanently
     end
@@ -28,7 +32,7 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
 
     if @post.save
-      redirect_to root_url
+      redirect_to @post
     end
   end
 
@@ -51,5 +55,18 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+
+    respond_to do |format|
+      format.html { redirect_to root_url }
+      format.json { head :no_content }
+    end
+  end
+
+  def tag
+    @posts = Post.all.select { |e| e.tag_list.include? params[:tag]  }
+    @posts_all = Post.all
+    render 'index'
   end
 end

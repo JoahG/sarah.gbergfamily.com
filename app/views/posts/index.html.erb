@@ -6,33 +6,33 @@
 	</div>
 	<div id="sidebar">
 		<div class="bubble">
-			<img class="stitle right" src="/assets/my_songs.png">
+			<%= link_to tag_path("My Songs") do %><img class="stitle right" src="/assets/my_songs.png"><% end %>
 			<ul>
-				<% @posts.each do |post|%>
+				<% @posts_all.each do |post|%>
 					<% if post.tag_list.include? "My Songs" %>
 						<li> <%= link_to post.title, post %> </li>
 					<%end%>
 				<%end%>
 			</ul>
-			<img class="stitle left" src="/assets/my_poems.png">
+			<%= link_to tag_path("My Poems") do %><img class="stitle left" src="/assets/my_poems.png"><% end %>
 			<ul>
-				<% @posts.each do |post|%>
+				<% @posts_all.each do |post|%>
 					<% if post.tag_list.include? "My Poems" %>
 						<li> <%= link_to post.title, post %> </li>
 					<%end%>
 				<%end%>
 			</ul>
-			<img class="stitle right" src="/assets/songs.png">
+			<%= link_to tag_path("Songs I Like") do %><img class="stitle right" src="/assets/songs.png"><% end %>
 			<ul>
-				<% @posts.each do |post|%>
+				<% @posts_all.each do |post|%>
 					<% if post.tag_list.include? "Songs I Like" %>
 						<li> <%= link_to post.title, post %> </li>
 					<%end%>
 				<%end%>
 			</ul>
-			<img class="stitle right" src="/assets/books.png">
+			<%= link_to tag_path("Book Reviews") do %><img class="stitle right" src="/assets/books.png"><% end %>
 			<ul>
-				<% @posts.each do |post|%>
+				<% @posts_all.each do |post|%>
 					<% if post.tag_list.include? "Book Reviews" %>
 						<li> <%= link_to post.title, post %> </li>
 					<%end%>
@@ -41,6 +41,14 @@
 		</div>
 	</div>
 	<div id="main" class="index">
+		<% if params[:tag] %>
+			<% if @posts.length > 0 %>
+				<h1 class="tag_title"> Posts filed under "<%= params[:tag] %>" </h1>
+			<% else %>
+				<h1 class="tag_title"> No posts filed under "<%= params[:tag] %>" :( </h1>
+			<% end %>
+		<% end %>
+		
 		<% @posts[0..15].each do |post| %>
 			<div class="article">
 				<div class="author">
@@ -63,25 +71,25 @@
 	</div>
 	<div id="sidebar">
 		<div class="bubble">
-			<img class="stitle right" src="/assets/my_thoughts.png">
+			<%= link_to tag_path("My Thoughts") do %><img class="stitle right" src="/assets/my_thoughts.png"><% end %>
 			<ul>
-				<% @posts.each do |post|%>
+				<% @posts_all.each do |post|%>
 					<% if post.tag_list.include? "My Thoughts" %>
 						<li> <%= link_to post.title, post %> </li>
 					<%end%>
 				<%end%>
 			</ul>
-			<img class="stitle left" src="/assets/sotm.png">
+			<%= link_to tag_path("SOTM") do %><img class="stitle left" src="/assets/sotm.png"><% end %>
 			<ul>
-				<% @posts.each do |post|%>
+				<% @posts_all.each do |post|%>
 					<% if post.tag_list.include? "SOTM" %>
 						<li> <%= link_to post.title, post %> </li>
 					<%end%>
 				<%end%>
 			</ul>
-			<img class="stitle right" src="/assets/rec-pat.png">
+			<%= link_to tag_path("Recipies/Crafts") do %><img class="stitle right" src="/assets/rec-pat.png"><% end %>
 			<ul>
-				<% @posts.each do |post|%>
+				<% @posts_all.each do |post|%>
 					<% if post.tag_list.include? "Recipies" or post.tag_list.include? "Crafts" %>
 						<li> <%= link_to post.title, post %> </li>
 					<%end%>

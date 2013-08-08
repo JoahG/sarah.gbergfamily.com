@@ -30,4 +30,15 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def destroy
+    @user = User.find(params[:id])
+    if current_user != @user
+      @user.destroy
+    end
+    respond_to do |format|
+      format.html { redirect_to root_url }
+      format.json { head :no_content }
+    end
+  end
 end

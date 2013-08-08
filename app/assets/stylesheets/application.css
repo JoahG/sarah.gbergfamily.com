@@ -714,3 +714,18 @@ ul.nolst {
   text-align: left;
   float:right;
 }
+
+blockquote {
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.tag_title {
+  margin-bottom: 20px;
+}
+
+.comment {
+    background-color: white;
+    box-shadow: 2px #000;
+}
