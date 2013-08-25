@@ -68,8 +68,8 @@ class PostsController < ApplicationController
   end
 
   def tag
-    @posts = Post.all.select { |e| e.tag_list.include? params[:tag]  }
-    @posts_all = Post.all
+    @posts = Post.all.select { |e| e.tag_list.include? params[:tag]  }.reverse
+    @posts_all = Post.all.reverse
     @right_buttons = Button.all.select{|b| b.side.downcase == "right"}
     @left_buttons = Button.all.select{|b| b.side.downcase == "left"}
     
