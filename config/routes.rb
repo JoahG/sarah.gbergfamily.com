@@ -10,6 +10,7 @@ Sblog::Application.routes.draw do
   resources :posts
   resources :sessions
   resources :comments
+  resources :buttons
 
   root :to => 'posts#index'
 end

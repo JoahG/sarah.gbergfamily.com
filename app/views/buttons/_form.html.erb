@@ -1,0 +1,12 @@
+<% if current_user %>
+	<div id="form">
+		<%= form_for @button do |f| %>
+			<%= f.text_field :url, :placeholder => "URL" %><br>
+			<%= f.text_field :side, :placeholder => "Side: 'Right' or 'Left'" %><br>
+			<%= f.file_field :img %> <br>
+			<%= f.submit %>
+		<% end %>
+	</div>
+<% else %>
+	<%= redirect_to_home %>
+<% end %>

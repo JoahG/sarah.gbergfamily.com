@@ -4,21 +4,28 @@
 	<div class="column two right-align">
 		<h2> Posts </h2>
 		<ul class="nolst">
+			<li> <%= link_to "New Post", new_post_path %></li>
 			<% @posts.each do |post| %>
 				<li><%= link_to post.title, post %> - <%= link_to 'Edit', edit_post_path(post) %> | <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></li>
 			<% end %>
-			<li> <%= link_to "New Post", new_post_path %></li>
 		</ul>
 	</div>
 
 	<div class="column two left-align">
 		<h2> Admins </h2>
 		<ul class="nolst">
+			<li> <%= link_to "New Admin", new_user_path %></li>
 			<% @users.each do |user| %>
 				<li><%= user.name %> - <%= link_to 'Edit', edit_user_path(user) %> | <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %></li>
 			<% end %>
-			<li> <%= link_to "New Admin", new_user_path %></li>
 		</ul>
+		<hr>
+		<h2> "Buttons" </h2>
+		<ul class="nolst">
+			<li> <%= link_to "New Button", new_button_path %> </li>
+			<% @buttons.each do |button| %>
+				<li><%= button.url %>: <strong><%= button.side %></strong> - <%= link_to 'Edit', edit_button_path(button) %> | <%= link_to 'Delete', button, method: :delete, data: {confirm: 'Are you sure?'} %> </li>
+			<% end %>
 	</div>
 <% else %>
 	<%= redirect_to_home %>

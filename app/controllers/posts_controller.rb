@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all.reverse
     @posts_all = Post.all
-
+    @right_buttons = Button.all.select{|b| b.side.downcase == "right"}
+    @left_buttons = Button.all.select{|b| b.side.downcase == "left"}
 
     respond_to do |format|
       format.html
@@ -13,6 +14,7 @@ class PostsController < ApplicationController
   def admin
     @posts = Post.all.reverse
     @users = User.all
+    @buttons = Button.all
   end
 
   def show

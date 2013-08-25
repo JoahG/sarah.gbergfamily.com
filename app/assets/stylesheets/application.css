@@ -45,8 +45,11 @@ h3 a, h2 a, h1 a {
 hr {
   border: none;
   outline: none;
-  border-bottom: 1px dashed #ccc;
+  border-bottom: 1px solid #000;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
+
 p a:hover,
 ul a:hover,
 ol a:hover,
@@ -728,4 +731,9 @@ blockquote {
 .comment {
     background-color: white;
     box-shadow: 2px #000;
+}
+
+.side_button {
+  width: 100%;
+  margin-top: 30px;
 }

@@ -38,6 +38,9 @@
 					<%end%>
 				<%end%>
 			</ul>
+			<% @left_buttons.each do |b| %>
+				<%= link_to image_tag(b.img.url, :class => "side_button"), b.url %>
+			<% end %>
 		</div>
 	</div>
 	<div id="main" class="index">
@@ -71,10 +74,10 @@
 	</div>
 	<div id="sidebar">
 		<div class="bubble">
-			<%= link_to tag_path("My Thoughts") do %><img class="stitle right" src="/assets/my_thoughts.png"><% end %>
+			<%= link_to tag_path("Food For Thought") do %><img class="stitle right" src="/assets/my_thoughts.png"><% end %>
 			<ul>
 				<% @posts_all.each do |post|%>
-					<% if post.tag_list.include? "My Thoughts" %>
+					<% if post.tag_list.include? "Food For Thought" %>
 						<li> <%= link_to post.title, post %> </li>
 					<%end%>
 				<%end%>
@@ -95,6 +98,9 @@
 					<%end%>
 				<%end%>
 			</ul>
+			<% @right_buttons.each do |b| %>
+				<%= link_to image_tag(b.img.url, :class => "side_button"), b.url %>
+			<% end %>
 		</div>
 	</div>
 </div>

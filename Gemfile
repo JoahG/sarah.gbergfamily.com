@@ -27,6 +27,8 @@ gem 'acts-as-taggable-on'
 
 gem 'friendly_id'
 
+gem 'paperclip'
+
 gem 'redcarpet'
 
 gem "recaptcha", :require => "recaptcha/rails"
