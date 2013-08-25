@@ -1,0 +1,8 @@
+<div class="article">
+	<h1> Posts Archive </h1>
+	<ul class="nolst">
+		<% @posts.each do |post| %>
+			<li><%= link_to post.title, post %> by <%= post.user.name %> on <%= post.created_at.strftime("%b. %d %Y") %>. Filed under <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(", ") %></li>
+		<% end %>
+	</ul>
+</div>

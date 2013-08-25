@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all.reverse
+    @posts = Post.all.reverse[0..9]
     @posts_all = Post.all
     @right_buttons = Button.all.select{|b| b.side.downcase == "right"}
     @left_buttons = Button.all.select{|b| b.side.downcase == "left"}
+    @home = true
 
     respond_to do |format|
       format.html
@@ -73,5 +74,9 @@ class PostsController < ApplicationController
     @left_buttons = Button.all.select{|b| b.side.downcase == "left"}
     
     render 'index'
+  end
+
+  def archive
+    @posts = Post.all
   end
 end

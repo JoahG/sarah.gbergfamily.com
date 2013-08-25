@@ -5,6 +5,7 @@ Sblog::Application.routes.draw do
   get "log_in", to: "sessions#new", :as => "log_in"
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "feed", to: "posts#index", :as => "feed"
+  get "archive", to: "posts#archive", :as => "archive"
 
   resources :users
   resources :posts

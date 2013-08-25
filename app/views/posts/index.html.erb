@@ -52,7 +52,7 @@
 			<% end %>
 		<% end %>
 		
-		<% @posts[0..15].each do |post| %>
+		<% @posts.each do |post| %>
 			<div class="article">
 				<div class="author">
 					<%= image_tag avatar_url(post.user, 30) %>
@@ -71,13 +71,18 @@
 				</span>
 			</div>
 		<%end%>
+		<% if @home %>
+			<%= link_to archive_path do %>
+				<strong>View Archive &raquo;</strong>
+			<% end %>
+		<% end %>
 	</div>
 	<div id="sidebar">
 		<div class="bubble">
-			<%= link_to tag_path("Food For Thought") do %><img class="stitle right" src="/assets/my_thoughts.png"><% end %>
+			<%= link_to tag_path("Food for Thought") do %><img class="stitle right" src="/assets/my_thoughts.png"><% end %>
 			<ul>
 				<% @posts_all.each do |post|%>
-					<% if post.tag_list.include? "Food For Thought" %>
+					<% if post.tag_list.include? "Food for Thought" %>
 						<li> <%= link_to post.title, post %> </li>
 					<%end%>
 				<%end%>
