@@ -69,6 +69,9 @@ class PostsController < ApplicationController
   def tag
     @posts = Post.all.select { |e| e.tag_list.include? params[:tag]  }
     @posts_all = Post.all
+    @right_buttons = Button.all.select{|b| b.side.downcase == "right"}
+    @left_buttons = Button.all.select{|b| b.side.downcase == "left"}
+    
     render 'index'
   end
 end
