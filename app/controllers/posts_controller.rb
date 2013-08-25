@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all.reverse[0..9]
-    @posts_all = Post.all
+    @posts_all = Post.all.reverse
     @right_buttons = Button.all.select{|b| b.side.downcase == "right"}
     @left_buttons = Button.all.select{|b| b.side.downcase == "left"}
     @home = true
@@ -77,6 +77,6 @@ class PostsController < ApplicationController
   end
 
   def archive
-    @posts = Post.all
+    @posts = Post.all.reverse
   end
 end
