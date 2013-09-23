@@ -22,18 +22,10 @@
 					<%end%>
 				<%end%>
 			</ul>
-			<%= link_to tag_path("Songs I Like") do %><img class="stitle right" src="/assets/songs.png"><% end %>
+			<%= link_to tag_path("SOTM") do %><img class="stitle left" src="/assets/sotm.png"><% end %>
 			<ul>
 				<% @posts_all.each do |post|%>
-					<% if post.tag_list.include? "Songs I Like" %>
-						<li> <%= link_to post.title, post %> </li>
-					<%end%>
-				<%end%>
-			</ul>
-			<%= link_to tag_path("Book Reviews") do %><img class="stitle right" src="/assets/books.png"><% end %>
-			<ul>
-				<% @posts_all.each do |post|%>
-					<% if post.tag_list.include? "Book Reviews" %>
+					<% if post.tag_list.include? "SOTM" %>
 						<li> <%= link_to post.title, post %> </li>
 					<%end%>
 				<%end%>
@@ -87,10 +79,10 @@
 					<%end%>
 				<%end%>
 			</ul>
-			<%= link_to tag_path("SOTM") do %><img class="stitle left" src="/assets/sotm.png"><% end %>
+			<%= link_to tag_path("Book Reviews") do %><img class="stitle right" src="/assets/books.png"><% end %>
 			<ul>
 				<% @posts_all.each do |post|%>
-					<% if post.tag_list.include? "SOTM" %>
+					<% if post.tag_list.include? "Book Reviews" %>
 						<li> <%= link_to post.title, post %> </li>
 					<%end%>
 				<%end%>
