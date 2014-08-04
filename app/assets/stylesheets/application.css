@@ -191,6 +191,12 @@ span.ssignup {
   box-shadow: 0px 1px 1px rgba(0,0,0,0.10);
   overflow: hidden;
 }
+
+.about {
+  width: auto !important;
+  max-width: 100% !important;
+}
+
 #main .article {
   background: url("index_card.png");
 }

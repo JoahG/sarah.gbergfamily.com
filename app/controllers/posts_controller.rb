@@ -79,4 +79,7 @@ class PostsController < ApplicationController
   def archive
     @posts = Post.all.reverse
   end
+
+  def about
+  end
 end

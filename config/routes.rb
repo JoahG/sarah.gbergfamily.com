@@ -6,6 +6,7 @@ Sblog::Application.routes.draw do
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "feed", to: "posts#index", :as => "feed"
   get "archive", to: "posts#archive", :as => "archive"
+  get "about", to: "posts#about", :as => "about"
 
   resources :users
   resources :posts
